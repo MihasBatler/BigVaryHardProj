@@ -35,13 +35,18 @@ public class RoleServiceImpl implements RoleService {
     @Transactional(readOnly = true)
     @Override
     public Role getRoleByName(String name) {
-        return roleRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Role not found: " + name));
+        return roleRepository.findByName(name).orElse(null);
+                //.orElseThrow(() -> new EntityNotFoundException("Role not found: " + name));
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<Role> getRolesByIds(List<Long> ids) {
         return roleRepository.findByIds(ids);
+    }
+    @Transactional
+    @Override
+    public void save(Role role) {
+        roleRepository.save(role);
     }
 }
