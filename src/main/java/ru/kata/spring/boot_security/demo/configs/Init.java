@@ -72,7 +72,7 @@ public class Init {
                 adminIvan.setAge(23);
                 adminIvan.setAddress("Москва");
                 adminIvan.setEnabled(true);
-                adminIvan.setRoles(Set.of(adminRole));
+                adminIvan.setRoles(Set.of(adminRole, userRole));
                 userRepository.save(adminIvan);
             }
         }
